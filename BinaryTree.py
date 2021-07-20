@@ -21,8 +21,6 @@ class BinaryTree( object ):
             if data < location.DATA: location.LEFT  = Node( data, location )
             if data > location.DATA: location.RIGHT = Node( data, location )
 
-
-
     def __insertHandle( self, current, data ) -> Node:
         if current.DATA:
             if data < current.DATA:
@@ -38,7 +36,6 @@ class BinaryTree( object ):
     def reverseTree( self ):
         self.__reverseTreeHandle( self.ROOT )
 
-
     def __reverseTreeHandle( self, location ) -> Node:
         if location:
             locL = self.__reverseTreeHandle( location.LEFT )
@@ -51,7 +48,6 @@ class BinaryTree( object ):
 
     def printOrder( self, template='IN_ORDER' ):
         return self.__printOrderHandle( self.ROOT, template )
-
 
     def __printOrderHandle( self, current, template ) -> str:
         if current is None: return ''
