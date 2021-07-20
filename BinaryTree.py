@@ -21,6 +21,7 @@ class BinaryTree( object ):
             if data < location.DATA: location.LEFT  = Node( data, location )
             if data > location.DATA: location.RIGHT = Node( data, location )
 
+                
     def __insertHandle( self, current, data ) -> Node:
         if current.DATA:
             if data < current.DATA:
@@ -30,6 +31,7 @@ class BinaryTree( object ):
                 if current.RIGHT:
                     return self.__insertHandle( current.RIGHT, data )
         return current
+
 
 
 
@@ -43,6 +45,7 @@ class BinaryTree( object ):
 
             location.LEFT, location.RIGHT = locR, locL;
             return location
+
 
 
 
