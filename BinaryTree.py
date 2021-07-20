@@ -39,7 +39,6 @@ class BinaryTree( object ):
         self.__reverseTreeHandle( self.ROOT )
 
 
-
     def __reverseTreeHandle( self, location ) -> Node:
         if location:
             locL = self.__reverseTreeHandle( location.LEFT )
@@ -52,7 +51,6 @@ class BinaryTree( object ):
 
     def printOrder( self, template='IN_ORDER' ):
         return self.__printOrderHandle( self.ROOT, template )
-
 
 
     def __printOrderHandle( self, current, template ) -> str:
