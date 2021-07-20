@@ -17,9 +17,9 @@ class BinaryTree( object ):
     def insert( self, data ):
         if not self.ROOT: self.ROOT = Node( data, None )
         else:
-            iHelp = self.__insertHandle( self.ROOT, data )
-            if data < iHelp.DATA: iHelp.LEFT  = Node( data, iHelp )
-            if data > iHelp.DATA: iHelp.RIGHT = Node( data, iHelp )
+            location = self.__insertHandle( self.ROOT, data )
+            if data < location.DATA: location.LEFT  = Node( data, location )
+            if data > location.DATA: location.RIGHT = Node( data, location )
 
 
 
