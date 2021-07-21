@@ -86,4 +86,5 @@ class CollectionTree( object ):
 if __name__ == '__main__':
 	CLT = CollectionTree( )
 	print( CLT.count( 'the quick brown fox jumps over the lazy dog' ) )
+	CLT.empty( )
 	print( CLT.count( 'the quick brown fox jumps over the lazy dog', words=True ) )
