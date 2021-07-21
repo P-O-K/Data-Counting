@@ -14,7 +14,7 @@ class CollectionTree( object ):
 	ROOT = None
 
 
-	def count( self, string, words=False ):
+	def count( self, string, words=False ) -> dict:
 		if words: string = string.split( ' ' )
 		for instance in string:
 			self.include( instance )
