@@ -14,7 +14,7 @@ class CollectionTree( object ):
 	ROOT = None
 
 
-	def count( self, string, words=False ) -> dict:
+	def count( self, string:str, words:bool=False ) -> dict:
 		if words: string = string.split( ' ' )
 		for instance in string:
 			self.include( instance )
@@ -22,7 +22,7 @@ class CollectionTree( object ):
 
 
 
-	def include( self, instance ):
+	def include( self, instance ) -> None:
 		if not self.ROOT: self.ROOT = Node( instance, None )
 		else:
 			local = self.__includeHandle( self.ROOT, instance )
@@ -32,7 +32,7 @@ class CollectionTree( object ):
 
 
 
-	def __includeHandle( self, current, data ) -> Node:
+	def __includeHandle( self, current:Node, data ) -> Node:
 		if current.DATA:
 			if data < current.DATA:
 				if current.LEFT:
@@ -59,7 +59,7 @@ class CollectionTree( object ):
 
 
 
-	def __reverseTreeHandle( self, location ) -> Node:
+	def __reverseTreeHandle( self, location:Node ) -> Node:
 		if location:
 			loc_L = self.__reverseTreeHandle( location.LEFT )
 			loc_R = self.__reverseTreeHandle( location.RIGHT )
@@ -74,7 +74,7 @@ class CollectionTree( object ):
 
 
 
-	def __getCollectionsHandle( self, nodeLocation, dictionary ) -> dict:
+	def __getCollectionsHandle( self, nodeLocation:Node, dictionary:dict ) -> dict:
 		if nodeLocation is None: return ''
 		self.__getCollectionsHandle( nodeLocation.LEFT, dictionary )
 		dictionary[ str( nodeLocation.DATA ) ] = nodeLocation.COUNT
@@ -85,6 +85,5 @@ class CollectionTree( object ):
 
 if __name__ == '__main__':
 	CLT = CollectionTree( )
-	print( CLT.count( 'the quick brown fox jumps over the lazy dog' ) )
-	CLT.empty( )
-	print( '\n', CLT.count( 'the quick brown fox jumps over the lazy dog', words=True ) )
+	print( CLT.count( 'the quick brown fox jumps over the lazy dog', words=True ) )
+	print( '"the" occures {} times in the sentence!!'.format( CLT.find( 'the' ).COUNT ) )
