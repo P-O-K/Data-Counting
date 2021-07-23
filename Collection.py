@@ -49,12 +49,12 @@ class CollectionTree( object ):
 
 
 
-	def empty( self ):
+	def empty( self ) -> None:
 		self.ROOT = None
 
 
 
-	def reverseTree( self ):
+	def reverseTree( self ) -> None:
 		self.__reverseTreeHandle( self.ROOT )
 
 
@@ -69,7 +69,7 @@ class CollectionTree( object ):
 
 
 
-	def getCollections( self ):
+	def getCollections( self ) -> dict:
 		return self.__getCollectionsHandle( self.ROOT, {} )
 
 
