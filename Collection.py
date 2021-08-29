@@ -8,18 +8,10 @@ class Node( object ):
 
 
 
-class CollectionTree( object ):
-	"""docstring for CollectionTree"""
+class DataCollection( object ):
+	"""docstring for DataCollection"""
 
 	ROOT = None
-
-
-	def count( self, string:str, words:bool=False ) -> dict:
-		if words: string = string.split( ' ' )
-		for instance in string:
-			self.include( instance )
-		return self.__getCollectionsHandle( self.ROOT, {} )
-
 
 
 	def include( self, instance ) -> None:
@@ -54,6 +46,14 @@ class CollectionTree( object ):
 
 
 
+	def count( self, string:str, words:bool=False ) -> dict:
+		if words: string = string.split( ' ' )
+		for instance in string:
+			self.include( instance )
+		return self.__getCollectionHandle( self.ROOT, {} )
+
+
+
 	def reverseTree( self ) -> None:
 		self.__reverseTreeHandle( self.ROOT )
 
@@ -69,21 +69,21 @@ class CollectionTree( object ):
 
 
 
-	def getCollections( self ) -> dict:
-		return self.__getCollectionsHandle( self.ROOT, {} )
+	def getCollection( self ) -> dict:
+		return self.__getCollectionHandle( self.ROOT, {} )
 
 
 
-	def __getCollectionsHandle( self, nodeLocation:Node, dictionary:dict ) -> dict:
+	def __getCollectionHandle( self, nodeLocation:Node, dictionary:dict ) -> dict:
 		if nodeLocation is None: return ''
-		self.__getCollectionsHandle( nodeLocation.LEFT, dictionary )
+		self.__getCollectionHandle( nodeLocation.LEFT, dictionary )
 		dictionary[ str( nodeLocation.DATA ) ] = nodeLocation.COUNT
-		self.__getCollectionsHandle( nodeLocation.RIGHT, dictionary )
+		self.__getCollectionHandle( nodeLocation.RIGHT, dictionary )
 		return dictionary
 
 
 
 if __name__ == '__main__':
-	CLT = CollectionTree( )
+	CLT = DataCollection( )
 	print( CLT.count( 'the quick brown fox jumps over the lazy dog', words=True ) )
 	print( '"the" occures {} times in the sentence!!'.format( CLT.find( 'the' ).COUNT ) )
